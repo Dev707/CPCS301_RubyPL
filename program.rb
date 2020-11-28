@@ -87,7 +87,7 @@ def similar_name(input)
   else
     puts ">   Sorry, NOT FOUND"
   end
-  File.write('C:\Users\User\Desktop\log.txt', log)
+  File.write("log.txt", log)
   #print log
 end
 
@@ -125,7 +125,7 @@ def salary(input)
 end
 $gvar = 0
 # input the data from text file
-input = File.readlines('C:\Users\User\Desktop\input.CSV').map &:split
+input = File.readlines("input.CSV").map &:split
 while true
   menu
   choice = gets.chomp.to_i
@@ -176,7 +176,7 @@ while true
     #print input
     #print input2
     require 'csv'
-    CSV.open('C:\Users\User\Desktop\Output.csv', "wb",{quote_char: ""} ) do |csv|
+    CSV.open("Output.csv", "wb",{quote_char: ""} ) do |csv|
       input2.each { |sub| csv << sub }
     end
 
