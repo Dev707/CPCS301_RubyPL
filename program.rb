@@ -28,11 +28,17 @@ def similar_name(input)
   # biggest_match to save the biggest match to compare it later
   biggest_match=0
   # biggest_match to save the index of the biggest match to back to it later
-  biggest_match_index=0
+  biggest_match_index=-1
   # log is the var where we will record all steps of matching to print it later
   log = ""
   # in this loop we will move to each names in the array for example sub = [Ali, Ahmed, 3000]
   input.each do |sub|
+    # To check if we can find the name directly then no need to do all process
+    if name.downcase.eql? sub[0].downcase
+      biggest_match = name.length
+      biggest_match_index = current_index
+      break
+    else
     # To record the steps in the log file
     log+= ("\n====== ")
     log+= "#{current_index}"
@@ -44,26 +50,31 @@ def similar_name(input)
       # and will convert each char to lowercase
       sub[0].downcase.split("").each do |sub3|
         # To check each letter in the name from array and the name from user if they are equal each other
-        if  sub2.eql? sub3
-          # if yes then increment current_match by 1 to find the biggest match later
-          current_match+=1
-          #################################
-          # To record the steps in the log file
-          log+="from user: #{sub2}\n"
-          log+= "from array: #{sub3}\n"
-          log+= "#{current_match}\n"
-          #################################
-          # To move to the next match if found it
-          next
+          if  sub2.eql? sub3
+            # if yes then increment current_match by 1 to find the biggest match later
+           current_match+=1
+            #################################
+            # To record the steps in the log file
+           log+="from user: #{sub2}\n"
+           log+= "from array: #{sub3}\n"
+           log+= "#{current_match}\n"
+           #################################
+           # To move to the next match if found it
+           next
+         end
         end
       end
     end
     # if the current_match greater than the biggest match
     # that mean this is the similar name
     if current_match>biggest_match
-      # Save the current index and the biggest match to back to it later
-      biggest_match = current_match
-      biggest_match_index = current_index
+      # if the current match grater then the half of the length of the word
+      # that mean this is the similar name to the input
+      if input[current_index][0].length/2 < current_match
+        # Save the current index and the biggest match to back to it later
+        biggest_match = current_match
+        biggest_match_index = current_index
+      end
     end
     #####################################
     # To record the steps in the log file
@@ -82,9 +93,8 @@ def similar_name(input)
     # To clear the counter
     current_match=0
   end
-  # if the biggest match grater then the half of the length of the word
-  # that mean this is the similar name to the input
-  if input[biggest_match_index][0].length/2 < biggest_match
+  # if the biggest match index still -1 that mean we didn't find the name
+  if biggest_match_index != -1
     #################################
     # To print the result to the user
     puts "Are you looking for  "+input[biggest_match_index][0]+" ?"
@@ -203,9 +213,8 @@ while true
   when 4
     # To print the question
     print "Enter the employee name: "
-    name = gets.chomp
-    # To split the name to first and last
-    name.split(" ")
+    # To receive the name and split the name to first and last
+    name = gets.chomp.split
     # To print the question
     print "Enter the employee salary: "
     salary = gets.chomp
@@ -230,7 +239,7 @@ while true
       #print input[search(input,name)]
     else
       # if there's no match in our records
-      puts name+">    Sorry, NOT FOUND\n\n"
+      ">    Sorry, #{name} NOT FOUND\n\n"
     end
 
     # 6 to save the new collection in output file and exit from the program
