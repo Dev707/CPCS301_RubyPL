@@ -19,6 +19,8 @@ def similar_name(input)
   # To ask user to enter the employee name and save it in @name
   print "Enter employee name: "
   name = gets.chomp.downcase
+  # To calculate the run time
+  start = Time.now
   # current_match for each char match in the word
   current_match=0
   # current_index is the index of name in the array
@@ -56,11 +58,15 @@ def similar_name(input)
         end
       end
     end
-    #
+    # if the current_match greater than the biggest match
+    # that mean this is the similar name
     if current_match>biggest_match
+      # Save the current index and the biggest match to back to it later
       biggest_match = current_match
       biggest_match_index = current_index
     end
+    #####################################
+    # To record the steps in the log file
     log+= "-------------\n"
     log+= ("Current match is ")
     log+= "#{current_match}\n"
@@ -70,120 +76,186 @@ def similar_name(input)
     log+= "#{biggest_match}\n"
     log+= ("index of the biggest match in the array is ")
     log+= "#{biggest_match_index}\n"
+    #####################################
+    # To move to the next name
     current_index+=1
+    # To clear the counter
     current_match=0
   end
+  # if the biggest match grater then the half of the length of the word
+  # that mean this is the similar name to the input
   if input[biggest_match_index][0].length/2 < biggest_match
+    #################################
+    # To print the result to the user
     puts "Are you looking for  "+input[biggest_match_index][0]+" ?"
     puts "We have in our record:"
+    #################################
     input.each do |sub|
+      # To check if there is another one have the same name
       if  sub[0].downcase.eql? input[biggest_match_index][0].downcase
+        # To print the result to the user
         puts sub[0] +" "+ (sub[1])[0..-2]
       end
     end
-
-    #print(input[match])
+    # print new line
     print "\n"
   else
+    # if there's no match in our records
     puts ">   Sorry, NOT FOUND"
   end
+  # To calculate the run time
+  finish = Time.now
+  total = finish - start
+  log+="\n\n-------------------------------------"
+  log+="\nStart at: #{start}"
+  log+="\nEnd at: #{finish}"
+  log+="\nTotal run time is: #{total} sec"
+  log+="\n-------------------------------------\n"
+  # To write all the steps in log file
   File.write("log.txt", log)
   #print log
 end
 
+# This method receive name and data as array
+# To find the name in data and return index
 def search(input,name)
+  # index
   x =0
   input.each do |sub|
+    # To add the first and the last name together
     temp= sub[0]+" "+(sub[1])[0..-2]
+    # To check if they are equal each other
     if temp.downcase.eql? name.downcase
+      # if yes then stop looking more
       break
     end
+    # to go to the next index
     x+=1
   end
+  # return index of the match
   x
 end
 
 def salary(input)
+  # To calculate the sum
   sum=0
+  # To find the min
   min=input[0][2].to_i
+  # To find the max
   max=input[0][2].to_i
   input.each do |sub|
+    # To sum all salary
     sum+=sub[2].to_i
+    # if the salary grater then max that mean this is the maximum salary
     if sub[2].to_i > max
       max = sub[2].to_i
     end
+    # if the salary less then min that mean this is the minimum salary
     if min > sub[2].to_i
       min = sub[2].to_i
     end
   end
+  #################################
+  # To print the result to the user
   print "\nThe Sum is "
   puts sum
   print "The Minimum is "
   puts min
   print "The Maximum is "
   puts max
+  #################################
 end
-$gvar = 0
-# input the data from text file
+# input the data from csv file and split it to array
 input = File.readlines("input.CSV").map &:split
+# it will show the Main menu till the user ask to exit and save
 while true
+  # To show the Main menu
   menu
+  # get the user choice from the Main menu
   choice = gets.chomp.to_i
+  # To display what the user choice from the Main menu
   case choice
+
+    # 1 to show the main menu
   when 1
+    # To print the question
     print "Enter the employee name for example \"Ali Ahmed\":  "
     name = gets.chomp
     temp = search(input,name)
     if input[temp] != nil
+      # To print the result to the user
       print "Employee name is "+input[temp][0]+" "+(input[temp][1])[0..-2] +" and his/her salary is "+input[temp][2]+" \n\n"
       #print input[search(input,name)]
     else
-      puts ">    NOT FOUND"
+      # if there's no match in our records
+      puts ">    Sorry, NOT FOUND"
     end
+
+    # 2 to find the Similar name
   when 2
-    start = Time.now
     similar_name(input)
-    finish  = Time.now
-    puts finish - start
+
+    # 3 to calculate the salary sum, max, min
   when 3
     salary(input)
+
+    # 4 to add new employee to the array
   when 4
-    print "Enter the employee's first name: "
+    # To print the question
+    print "Enter the employee name: "
     name = gets.chomp
-    print "Enter the employee's last name: "
-    lastname = gets.chomp
+    # To split the name to first and last
+    name.split(" ")
+    # To print the question
     print "Enter the employee salary: "
     salary = gets.chomp
-    input.push([name,lastname+",",salary])
-    puts ">    Done!"
-  when 5
+    # To push the new element to the array
+    input.push([name[0],name[1]+",",salary])
+    # To print result
+    puts ">    Record added successfully! \n\n"
+
+    # 5 to delete an exited employee from the array
+     when 5
+    # To print the question
     print "Enter the employee name for example \"Ali Ahmed\":  "
     name = gets.chomp
+    # To get the index of the employee from the array
     temp = search(input,name)
+    # if temp is not nil that mean we have this name in our record
     if input[temp] != nil
+      # delete the name by using index from search method
       input.delete_at(temp)
+      # To print result
       puts ">    Record deleted successfully! \n\n"
       #print input[search(input,name)]
     else
-      puts name+">    NOT FOUND\n\n"
+      # if there's no match in our records
+      puts name+">    Sorry, NOT FOUND\n\n"
     end
 
+    # 6 to save the new collection in output file and exit from the program
   when 6
+    # creat new array to copy the data to it with new format
     input2 = []
+    # mix the first and the last name together for each element
     input.each { |sub|
       input2.push([sub[0]+" "+ (sub[1])[0..-2]," "+sub[2]])
     }
     #print input
     #print input2
+    # To write into csv file
     require 'csv'
+    # creat new csv file output.csv and remove any "" marks
     CSV.open("Output.csv", "wb",{quote_char: ""} ) do |csv|
+      # writing into the file
       input2.each { |sub| csv << sub }
     end
-
+    # To print the result
     puts "\n>    Output file saved successfully!"
     puts ">    Goodbye!"
     break
   else
+    # if the user entered wrong input
     puts "I have no idea what to do with that!"
     puts "Let's try again\n"
   end
