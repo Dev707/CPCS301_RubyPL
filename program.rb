@@ -35,6 +35,7 @@ def similar_name(input)
   input.each do |sub|
     # To check if we can find the name directly then no need to do all process
     if name.downcase.eql? sub[0].downcase
+      log+= "\nStop at index: #{current_index} found full matching\n"
       biggest_match = name.length
       biggest_match_index = current_index
       break
@@ -68,9 +69,10 @@ def similar_name(input)
     # if the current_match greater than the biggest match
     # that mean this is the similar name
     if current_match>biggest_match
-      # if the current match grater then the half of the length of the word
+      # if the current match grater then the length of the word
       # that mean this is the similar name to the input
-      if input[current_index][0].length/2 < current_match
+      chance = (current_match.to_f/input[current_index][0].length.to_f > biggest_match.to_f/input[biggest_match_index][0].length.to_f)
+      if chance && current_match.to_f/input[current_index][0].length.to_f > 0.5
         # Save the current index and the biggest match to back to it later
         biggest_match = current_match
         biggest_match_index = current_index
@@ -78,7 +80,7 @@ def similar_name(input)
     end
     #####################################
     # To record the steps in the log file
-    log+= "-------------\n"
+    log+= "----------------------\n"
     log+= ("Current match is ")
     log+= "#{current_match}\n"
     log+= ("Current index is ")
@@ -87,6 +89,8 @@ def similar_name(input)
     log+= "#{biggest_match}\n"
     log+= ("index of the biggest match in the array is ")
     log+= "#{biggest_match_index}\n"
+    log+= "#{input[current_index][0]} | #{(current_match.to_f/input[current_index][0].length.to_f)*100} % \n"
+    log+= "----------------------\n"
     #####################################
     # To move to the next name
     current_index+=1
