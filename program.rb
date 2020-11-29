@@ -89,7 +89,7 @@ def similar_name(input)
     log+= "#{biggest_match}\n"
     log+= ("index of the biggest match in the array is ")
     log+= "#{biggest_match_index}\n"
-    log+= "#{input[current_index][0]} | #{(current_match.to_f/input[current_index][0].length.to_f)*100} % \n"
+    log+= "#{input[current_index][0]} | #{((current_match.to_f/input[current_index][0].length.to_f)*100).round(2)} % \n"
     log+= "----------------------\n"
     #####################################
     # To move to the next name
@@ -219,6 +219,11 @@ while true
     print "Enter the employee name: "
     # To receive the name and split the name to first and last
     name = gets.chomp.split
+    # show error message if user entered wrong input
+    if name[1] == nil
+      puts "\n>    Error, make sure to enter valid name for example \"Ahmed Ali\"\n\n"
+      next
+    end
     # To print the question
     print "Enter the employee salary: "
     salary = gets.chomp
@@ -273,3 +278,4 @@ while true
     puts "Let's try again\n"
   end
 end
+##########################################################################
