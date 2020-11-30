@@ -71,12 +71,15 @@ def similar_name(input)
     if current_match>biggest_match
       # if the current match grater then the length of the word
       # that mean this is the similar name to the input
-      chance = (current_match.to_f/input[current_index][0].length.to_f > biggest_match.to_f/input[biggest_match_index][0].length.to_f)
-      if chance && current_match.to_f/input[current_index][0].length.to_f > 0.5
-        # Save the current index and the biggest match to back to it later
-        biggest_match = current_match
-        biggest_match_index = current_index
-      end
+		chance = (current_match.to_f/input[current_index][0].length.to_f >= biggest_match.to_f/input[biggest_match_index][0].length.to_f)
+		if (chance && current_match.to_f/input[current_index][0].length.to_f > 0.5) && ((input[current_index][0].length.to_f/2) < current_match)
+			# if the current match grater then the half of the length of the word
+			#if (input[current_index][0].length.to_f/2) < current_match
+				# Save the current index and the biggest match to back to it later
+				biggest_match = current_match
+				biggest_match_index = current_index
+			#end
+		end
     end
     #####################################
     # To record the steps in the log file
