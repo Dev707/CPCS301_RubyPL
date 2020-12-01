@@ -1,10 +1,10 @@
 
 ====== 0 ======
-from user: a
-from array: a
+from user: b
+from array: b
 1
-from user: a
-from array: a
+from user: r
+from array: r
 2
 ----------------------
 Current match is 2
@@ -15,23 +15,20 @@ Ragab | 40.0 %
 ----------------------
 
 ====== 1 ======
-from user: m
-from array: m
+from user: d
+from array: d
 1
-from user: a
-from array: a
-2
 ----------------------
-Current match is 2
+Current match is 1
 Current index is 1
 Biggest match is 0
 index of the biggest match in the array is -1
-Ahmed | 40.0 % 
+Ahmed | 20.0 % 
 ----------------------
 
 ====== 2 ======
-from user: a
-from array: a
+from user: d
+from array: d
 1
 ----------------------
 Current match is 1
@@ -42,113 +39,41 @@ Khaled | 16.67 %
 ----------------------
 
 ====== 3 ======
-from user: m
-from array: m
-1
-from user: a
-from array: a
-2
-from user: a
-from array: a
-3
-----------------------
-Current match is 3
-Current index is 3
-Biggest match is 3
-index of the biggest match in the array is 3
-Ayman | 60.0 % 
-----------------------
-
-====== 4 ======
-from user: a
-from array: a
+from user: n
+from array: n
 1
 ----------------------
 Current match is 1
-Current index is 4
-Biggest match is 3
-index of the biggest match in the array is 3
-khaled | 16.67 % 
+Current index is 3
+Biggest match is 0
+index of the biggest match in the array is -1
+Ayman | 20.0 % 
 ----------------------
 
-====== 5 ======
-from user: m
-from array: m
+====== 4 ======
+from user: b
+from array: b
 1
-from user: s
-from array: s
+from user: n
+from array: n
 2
-from user: t
-from array: t
+from user: d
+from array: d
 3
-from user: f
-from array: f
-4
-from user: a
-from array: a
-5
-from user: a
-from array: a
-6
-----------------------
-Current match is 6
-Current index is 5
-Biggest match is 6
-index of the biggest match in the array is 5
-mostafa | 85.71 % 
-----------------------
-
-====== 6 ======
-from user: m
-from array: m
-1
-from user: s
-from array: s
-2
-from user: t
-from array: t
-3
-from user: f
-from array: f
-4
-from user: a
-from array: a
-5
-from user: a
-from array: a
-6
-----------------------
-Current match is 6
-Current index is 6
-Biggest match is 6
-index of the biggest match in the array is 5
-mostafa | 85.71 % 
-----------------------
-
-====== 7 ======
-from user: m
-from array: m
-1
-from user: m
-from array: m
-2
-from user: m
-from array: m
-3
-from user: a
-from array: a
+from user: r
+from array: r
 4
 ----------------------
 Current match is 4
-Current index is 7
-Biggest match is 6
-index of the biggest match in the array is 5
-mohammed | 50.0 % 
+Current index is 4
+Biggest match is 4
+index of the biggest match in the array is 4
+bander | 66.67 % 
 ----------------------
 
 
 -------------------------------------
-Start at: 2020-11-30 15:52:09 +0300
-End at: 2020-11-30 15:52:09 +0300
-Total run time is: 0.00063 sec
+Start at: 2020-12-01 10:25:53 +0300
+End at: 2020-12-01 10:25:53 +0300
+Total run time is: 0.0036328 sec
 -------------------------------------

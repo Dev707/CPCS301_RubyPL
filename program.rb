@@ -254,21 +254,15 @@ while true
 
     # 6 to save the new collection in output file and exit from the program
   when 6
-    # creat new array to copy the data to it with new format
-    input2 = []
-    # mix the first and the last name together for each element
-    input.each { |sub|
-      input2.push([sub[0]+" "+ (sub[1])[0..-2]," "+sub[2]])
-    }
     #print input
     #print input2
-    # To write into csv file
-    require 'csv'
-    # creat new csv file output.csv and remove any "" marks
-    CSV.open("Output.csv", "wb",{quote_char: ""} ) do |csv|
-      # writing into the file
-      input2.each { |sub| csv << sub }
+    new_file = ""
+    # mix the first and the last name together for each element
+    input.each do |sub|
+      new_file += "#{sub[0]} #{(sub[1])} #{sub[2]}\n"
     end
+    # To write into csv file
+    File.write("Output.csv", new_file)
     # To print the result
     puts "\n>    Output file saved successfully!"
     puts ">    Goodbye!"
