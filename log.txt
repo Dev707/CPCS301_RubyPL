@@ -6,12 +6,19 @@ from array: a
 from user: l
 from array: l
 2
+from user: i
+from array: i
+3
 ----------------------
-Current match is 2
+Current match is 3
 Current index is 0
-Biggest match is 2
+Biggest match is 3
 index of the biggest match in the array is 0
+<<<<<<< Updated upstream
 Ali | 66.67 % 
+=======
+Ali | 100.0 % 
+>>>>>>> Stashed changes
 ----------------------
 
 ====== 1 ======
@@ -24,7 +31,7 @@ from array: a
 ----------------------
 Current match is 2
 Current index is 1
-Biggest match is 2
+Biggest match is 3
 index of the biggest match in the array is 0
 Ragab | 40.0 % 
 ----------------------
@@ -33,27 +40,46 @@ Ragab | 40.0 %
 from user: a
 from array: a
 1
+from user: h
+from array: h
+2
+from user: d
+from array: d
+3
 ----------------------
-Current match is 1
+Current match is 3
 Current index is 2
-Biggest match is 2
+Biggest match is 3
 index of the biggest match in the array is 0
-Ahmed | 20.0 % 
+Ahmed | 60.0 % 
 ----------------------
 
 ====== 3 ======
+from user: k
+from array: k
+1
 from user: a
 from array: a
-1
+2
+from user: h
+from array: h
+3
 from user: l
 from array: l
-2
+4
+from user: d
+from array: d
+5
 ----------------------
-Current match is 2
+Current match is 5
 Current index is 3
-Biggest match is 2
+Biggest match is 3
 index of the biggest match in the array is 0
+<<<<<<< Updated upstream
 Khaled | 33.33 % 
+=======
+Khaled | 83.33333333333334 % 
+>>>>>>> Stashed changes
 ----------------------
 
 ====== 4 ======
@@ -63,15 +89,39 @@ from array: a
 from user: a
 from array: a
 2
-from user: y
-from array: y
-3
 ----------------------
-Current match is 3
+Current match is 2
 Current index is 4
-Biggest match is 2
+Biggest match is 3
 index of the biggest match in the array is 0
-Ayman | 60.0 % 
+Ayman | 40.0 % 
+----------------------
+
+====== 5 ======
+from user: k
+from array: k
+1
+from user: a
+from array: a
+2
+from user: h
+from array: h
+3
+from user: l
+from array: l
+4
+from user: d
+from array: d
+5
+from user: i
+from array: i
+6
+----------------------
+Current match is 6
+Current index is 5
+Biggest match is 3
+index of the biggest match in the array is 0
+khalid | 100.0 % 
 ----------------------
 
 ====== 5 ======
@@ -91,7 +141,13 @@ ali | 66.67 %
 
 
 -------------------------------------
+<<<<<<< Updated upstream
 Start at: 2021-03-23 17:39:26 +0300
 End at: 2021-03-23 17:39:26 +0300
 Total run time is: 0.0048238 sec
+=======
+Start at: 2020-11-30 14:47:59 +0300
+End at: 2020-11-30 14:47:59 +0300
+Total run time is: 0.000415 sec
+>>>>>>> Stashed changes
 -------------------------------------
